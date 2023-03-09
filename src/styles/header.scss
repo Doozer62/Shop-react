@@ -1,0 +1,19 @@
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.header__list {
+    display: flex;
+}
+
+.header__logo {
+    width: 60px;
+}
+
+.header__cart {
+    width: 30px;
+}
