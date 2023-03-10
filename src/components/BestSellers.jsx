@@ -1,7 +1,6 @@
 import '../styles/bestsellers.scss';
-import Pled from "../assets/img/products/pled-1.jpg";
-import Pled2 from "../assets/img/products/pled-2.jpg";
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 // const products = [
 //     {
@@ -52,18 +51,26 @@ import { useState } from 'react';
 //         "updatedAt": "2011-10-30T17:44:25.381Z",
 //     }
 // ];
-
+function BestSellers() {
 const [products, setProducts] = useState([])
 
-function BestSellers() {
+useEffect(() => {
+    axios.get('https://masterclass.kimitsu.it-incubator.ru/api/products').then((res) => {
+        setProducts(res.data)
+    })
+}, [])
+
+
     return (
         <div className="container card__inner">
 
             {products.map((product) => (
                 <div className="card" key={product.id}>
+                    <div className="card__wrapper">
                     <img className="image" src={product.image} alt="Товар" />
                     <h4 className='title'>{product.title}</h4>
                     <p className="price">{product.price} р</p>
+                    </div>
                     <button>Show More</button>
                 </div>
             ))}
