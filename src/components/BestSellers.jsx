@@ -60,10 +60,9 @@ useEffect(() => {
     })
 }, [])
 
-
     return (
+        <div className="bestSeller">
         <div className="container card__inner">
-
             {products.map((product) => (
                 <div className="card" key={product.id}>
                     <div className="card__wrapper">
@@ -74,6 +73,7 @@ useEffect(() => {
                     <button>Show More</button>
                 </div>
             ))}
+        </div>
         </div>
     )
 }
