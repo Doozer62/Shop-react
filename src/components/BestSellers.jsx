@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function BestSellers() {
 const [products, setProducts] = useState([]);
+const [search, setSearch] = useState('');
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -13,10 +14,16 @@ useEffect(() => {
     })
 }, [])
 
+const finalProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(search.toLowerCase())
+})
+
     return (
+        <div className="container">
+        <input type="text" placeholder='Поиск' value={search} onChange={(e) => {setSearch(e.currentTarget.value)}} />
         <div className="bestSeller">
-        <div className="container card__inner">
-            {products.map((product) => (
+        <div className="card__inner">
+            {finalProducts.map((product) => (
                 <div className="card" key={product.id}>
                     <div className="card__wrapper">
                     <img className="image" src={product.image} alt="Товар" />
@@ -26,6 +33,7 @@ useEffect(() => {
                     <button onClick={() => navigate(`/product/${product.id}`)}>Show More</button>
                 </div>
             ))}
+        </div>
         </div>
         </div>
     )

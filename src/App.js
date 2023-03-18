@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import BestSellers from './components/BestSellers';
 import Product from './components/Product';
-import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +21,7 @@ function App() {
       <Header />
       <hr className="divider" />
       <RouterProvider router={router} />
+
     </div>
   );
 }
